@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { Header, List } from './components';
+import { stateArray } from './utils/stateArray';
 
-function App() {
+const App = () => {
+
+  const [array, setArray] = useState(stateArray);
+  const [loading, setLoading] = useState(null);
+  
+  useEffect(() => {
+    //updating the arrays
+    setTimeout(() => {
+      if (array.length <= 99) { 
+        setLoading(true);
+        setArray([...array, array.length + 1]);
+      }
+      if (array.length >= 100) { 
+        setLoading(false);
+      }
+    }, 1000);
+  }, [array]);
+
+ 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <List loading={loading} array={array} />
     </div>
-  );
+  )
 }
 
 export default App;
