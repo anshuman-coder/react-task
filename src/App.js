@@ -5,7 +5,7 @@ import { stateArray } from './utils/stateArray';
 const App = () => {
 
   const [array, setArray] = useState(stateArray);
-  const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     //updating the arrays
