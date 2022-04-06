@@ -20,7 +20,6 @@ const App = () => {
     }, 1000);
   }, [array]);
 
- 
 
   return (
     <div>
